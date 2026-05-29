@@ -57,6 +57,7 @@ def build_delogo_command(
     cmd = [
         ffmpeg_path(),
         "-y",
+        "-nostdin",
         "-i",
         str(info.path),
         "-vf",
@@ -111,6 +112,7 @@ def run_delogo(
 
     process = subprocess.Popen(
         cmd,
+        stdin=subprocess.DEVNULL,
         stdout=subprocess.PIPE,
         stderr=subprocess.STDOUT,
         text=True,
